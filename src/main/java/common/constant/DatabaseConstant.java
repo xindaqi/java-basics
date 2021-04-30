@@ -23,12 +23,17 @@ public class DatabaseConstant {
     /**
      * 数据库用户名
      */
-    public static final String DB_USER_NAME = "root";
+    public static final String DB_MYSQL_USER_NAME = "root";
 
     /**
      * 数据库密码
      */
-    public static final String DB_PASSWORD = "123456";
+    public static final String DB_MYSQL_PASSWORD = "123456";
+
+    /**
+     * MySQL数据库
+     */
+    public static final String MY_SQL = "mysql";
 
     private DatabaseConstant() {
         throw new AssertionError(DatabaseConstant.class.getName() + PRIVATE_INSTANCE_ERROR);
