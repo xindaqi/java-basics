@@ -74,6 +74,18 @@ public class ListTest {
         return list;
     }
 
+    /**
+     * List交集
+     *
+     * @param sourceList 源List
+     * @param targetList 目标List
+     * @return
+     */
+    private static List<String> retainAllTest(List<String> sourceList, List<String> targetList) {
+        sourceList.retainAll(targetList);
+        return sourceList;
+    }
+
 
     public static void main(String[] args) {
         logger.info("List测试");
@@ -87,6 +99,9 @@ public class ListTest {
         logger.info("List removed by iterator: " + removeElementByIterator(list));
 //        logger.info("List removed by for: " + removeElementByFor(list));
 //        logger.info("List removed by for enhanced: " + removeElementByForEnhanced(list));
+        List<String> sourceList = Stream.of("xiaoxiao", "xiaohua", "xiaolan").collect(Collectors.toList());
+        List<String> targetList = Stream.of("xiaoxiao", "xiaoer").collect(Collectors.toList());
+        logger.info("交集：" + retainAllTest(sourceList, targetList));
 
     }
 }
