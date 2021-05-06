@@ -86,6 +86,16 @@ public class ListTest {
         return sourceList;
     }
 
+    /**
+     * null列表测试
+     *
+     * @param list 列表
+     * @return 列表
+     */
+    private static List<String> nullListTest(List<String> list) {
+        return Optional.ofNullable(list).orElse(new ArrayList<>());
+    }
+
 
     public static void main(String[] args) {
         logger.info("List测试");
@@ -102,6 +112,8 @@ public class ListTest {
         List<String> sourceList = Stream.of("xiaoxiao", "xiaohua", "xiaolan").collect(Collectors.toList());
         List<String> targetList = Stream.of("xiaoxiao", "xiaoer").collect(Collectors.toList());
         logger.info("交集：" + retainAllTest(sourceList, targetList));
+        List<String> listNull = null;
+        logger.info("列表null返回测试："  + nullListTest(listNull));
 
     }
 }
