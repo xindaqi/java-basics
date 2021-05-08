@@ -11,6 +11,9 @@
         <commons-lang3.version>3.11</commons-lang3.version>
         <bean-utils.version>1.9.4</bean-utils.version>
         <druid.version>1.1.10</druid.version>
+        <protobuf.java.version>3.16.0-rc-2</protobuf.java.version>
+        <protobuf.java.util.version>3.16.0-rc-2</protobuf.java.util.version>
+        <protobuf.java.format.version>1.4</protobuf.java.format.version>
     </properties>
     <build>
         <plugins>
@@ -53,6 +56,24 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>${protobuf.java.util.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.protobuf-java-format</groupId>
+            <artifactId>protobuf-java-format</artifactId>
+            <version>${protobuf.java.format.version}</version>
         </dependency>
     </dependencies>
 
