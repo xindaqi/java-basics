@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static common.constant.DigitalConstant.FIVE;
+
 /**
  * Java8 Lambda表达式测试.
  *
@@ -142,6 +144,18 @@ public class LambdaExpressionTest {
         logger.info("我是List<Object>求和结果：" + sum);
     }
 
+    /**
+     * map根据值排序
+     *
+     * @param map 源map数据
+     */
+    void mapSortedByValue(Map<String, Integer> map) {
+        Map<String, Integer> resMap = map.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldVal, newVal) -> oldVal, LinkedHashMap::new));
+        logger.info("排序后的map：" + resMap);
+    }
+
 
     public static void main(String[] args) {
         List<UserEntity> userEntityList = new ArrayList<>();
@@ -177,6 +191,11 @@ public class LambdaExpressionTest {
         lambdaExpressionTest.listObjToListString(userEntityList, list);
         lambdaExpressionTest.listIntegerSum(list3);
         lambdaExpressionTest.listObjSum(userAgeEntityList);
+        Map<String, Integer> mapWillSorted = new HashMap<>(FIVE);
+        mapWillSorted.put("xiaoxiao", 3);
+        mapWillSorted.put("xiaolan", 29);
+        mapWillSorted.put("xiaohua", 4);
+        lambdaExpressionTest.mapSortedByValue(mapWillSorted);
     }
 
 
