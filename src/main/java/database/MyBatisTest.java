@@ -5,6 +5,7 @@ import database.dto.UserOutputDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -18,12 +19,10 @@ public class MyBatisTest {
 
     private static final Logger logger = Logger.getLogger("MyBatisTest");
 
-    public static void main(String[] args) {
-        SqlSession sqlSession = null;
-
+    public static void main(String[] args) throws IOException {
+        SqlSessionFactory sqlSessionFactory = MybatisConfig.getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            SqlSessionFactory sqlSessionFactory = MybatisConfig.getSqlSessionFactory();
-            sqlSession = sqlSessionFactory.openSession();
             UserDAO userDAO = sqlSession.getMapper(UserDAO.class);
             List<UserOutputDTO> userOutputDTOList = userDAO.queryUserByPage();
             logger.info("我是用户信息列表：" + userOutputDTOList);

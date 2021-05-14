@@ -7,7 +7,7 @@
             user_id,
             username
         FROM
-            tb_user
+            tb_user;
     </select>
 
 </mapper>
