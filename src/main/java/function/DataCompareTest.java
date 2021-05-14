@@ -1,5 +1,7 @@
 package function;
 
+import common.entity.StringRepeatedTimesEntity;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +44,22 @@ public class DataCompareTest {
         logger.info("重复数键值对：" + mapRes);
     }
 
+    /**
+     * 从统计数量的Map中筛选给定重复次数的键值
+     *
+     * @param map 重复数据键值
+     * @param repeatedTimes 数据重复次数
+     * @return 重复数据实体列表
+     */
+    public static List<StringRepeatedTimesEntity> filterRepeatDataInListReturnEntityList(Map<String, Long> map, Integer repeatedTimes) {
+        List<StringRepeatedTimesEntity> stringRepeatedTimesEntityList = map.entrySet().stream()
+                .filter(s -> s.getValue() > repeatedTimes)
+                .map(e -> new StringRepeatedTimesEntity(e.getKey(), e.getValue()))
+                .collect(Collectors.toList());
+        logger.info("重复数键值对：" + stringRepeatedTimesEntityList);
+        return stringRepeatedTimesEntityList;
+    }
+
     public static void main(String[] args) {
 
         String sourceStr = "123,345,456,123,345,345";
@@ -49,6 +67,7 @@ public class DataCompareTest {
         List<String> list = Arrays.asList(sourceArr);
         Map<String, Long> map = countDataRepeatInList(list);
         filterRepeatDataInList(map, ONE);
+        filterRepeatDataInListReturnEntityList(map, ONE);
 
     }
 
