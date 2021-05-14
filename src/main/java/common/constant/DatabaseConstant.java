@@ -35,6 +35,11 @@ public class DatabaseConstant {
      */
     public static final String MY_SQL = "mysql";
 
+    /**
+     * Mybatis配置文件路径
+     */
+    public static final String MYBATIS_CONFIG_PATH = "config/mybatis-config.xml";
+
     private DatabaseConstant() {
         throw new AssertionError(DatabaseConstant.class.getName() + PRIVATE_INSTANCE_ERROR);
     }
