@@ -1,5 +1,6 @@
 package database;
 
+import common.config.MybatisConfig;
 import database.dao.UserDAO;
 import database.dto.UserOutputDTO;
 import org.apache.ibatis.session.SqlSession;
