@@ -13,12 +13,12 @@ public class DatabaseConstant {
     /**
      * JDBC驱动
      */
-    public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    public static final String JDBC_MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     /**
      * 数据库连接地址
      */
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/db_monkey_run?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai";
+    public static final String DB_MYSQL_URL = "jdbc:mysql://localhost:3306/db_monkey_run?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai";
 
     /**
      * 数据库用户名

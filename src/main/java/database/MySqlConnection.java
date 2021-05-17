@@ -21,8 +21,8 @@ public class MySqlConnection implements IDatabaseConnection {
             /**
              * 注册MySQL驱动
              */
-            Class.forName(JDBC_DRIVER);
-            return DriverManager.getConnection(DB_URL, DB_MYSQL_USER_NAME, DB_MYSQL_PASSWORD);
+            Class.forName(JDBC_MYSQL_DRIVER);
+            return DriverManager.getConnection(DB_MYSQL_URL, DB_MYSQL_USER_NAME, DB_MYSQL_PASSWORD);
         } catch(SQLException se) {
             throw new RuntimeException(se);
         } catch(Exception e) {
