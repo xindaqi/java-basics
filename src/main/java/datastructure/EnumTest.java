@@ -41,7 +41,7 @@ public enum EnumTest {
         }
     }
 
-    public String getProvicneName() {
+    public String getProvinceName() {
         return provicneName;
     }
 
@@ -55,6 +55,6 @@ public enum EnumTest {
 
         EnumTest enumTest = EnumTest.ANHUI;
         enumTest.judgeObject();
-        logger.info("Province: " + enumTest.getProvicneName() + ",number:" + enumTest.getNumber());
+        logger.info("Province: " + enumTest.getProvinceName() + ",number:" + enumTest.getNumber());
     }
 }
