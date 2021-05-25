@@ -156,6 +156,18 @@ public class LambdaExpressionTest {
         logger.info("排序后的map：" + resMap);
     }
 
+    /**
+     * List<Double>转换为List<Integer>
+     *
+     * @param list 待转换List
+     */
+    void doubleToIntTest(List<Double> list) {
+        List<Float> floatList = list.stream().map(Float::new).collect(Collectors.toList());
+        List<Integer> integerList = Optional.ofNullable(list).orElse(new ArrayList<>()).stream().map(s -> s.intValue()).collect(Collectors.toList());
+        logger.info("int list:" + integerList);
+
+    }
+
 
     public static void main(String[] args) {
         List<UserEntity> userEntityList = new ArrayList<>();
@@ -196,6 +208,8 @@ public class LambdaExpressionTest {
         mapWillSorted.put("xiaolan", 29);
         mapWillSorted.put("xiaohua", 4);
         lambdaExpressionTest.mapSortedByValue(mapWillSorted);
+        List<Double> doubleList = Stream.of(20.0, 20.1).collect(Collectors.toList());
+        lambdaExpressionTest.doubleToIntTest(doubleList);
     }
 
 
