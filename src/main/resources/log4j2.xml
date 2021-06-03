@@ -29,7 +29,7 @@
         <!--        </RollingFile>-->
     </Appenders>
     <Loggers>
-        <AsyncLogger name="datastructure.StringTest" level="${INFO_LEVEL}" additivity="false">
+        <AsyncLogger name="log.Log4j2Test" level="${INFO_LEVEL}" additivity="false">
             <appender-ref ref="Console"/>
         </AsyncLogger>
         <AsyncLogger name="RollingFile2" level="${TRACE_LEVEL}" additivity="false">
