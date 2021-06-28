@@ -23,6 +23,10 @@ public class UserEntity {
         this.sex = sex;
     }
 
+    public UserEntity copy() {
+        return new UserEntity(uid, nickname, sex);
+    }
+
     public String getUid() {
         return uid;
     }
