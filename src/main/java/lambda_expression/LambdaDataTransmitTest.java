@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * 我是描述信息.
+ * Stream值传递和引用传递.
  *
  * @author xindaqi
  * @date 2021-06-28 17:14
