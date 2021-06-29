@@ -115,6 +115,42 @@ public class DataCalculateStreamTest {
         }
     }
 
+    /**
+     * 7.List<Double>max求最大值
+     *
+     * @param doubleList
+     */
+    private static void maximumTest(List<Double> doubleList) {
+        OptionalDouble maxVal = Optional.ofNullable(doubleList).orElse(new ArrayList<>())
+                .stream()
+                .mapToDouble(Double::doubleValue)
+                .max();
+        if(maxVal.isPresent()) {
+            double minResult = maxVal.getAsDouble();
+            logger.info("Minimum:" + minResult);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
+    /**
+     * 8. List<对象>max求最大值
+     *
+     * @param userAgeEntityList 源列表
+     */
+    private static void maximumTestWithObject(List<UserAgeEntity> userAgeEntityList) {
+        OptionalInt maxVal = Optional.ofNullable(userAgeEntityList).orElse(new ArrayList<>())
+                .stream()
+                .mapToInt(UserAgeEntity::getAge)
+                .max();
+        if(maxVal.isPresent()) {
+            int minimumResult = maxVal.getAsInt();
+            logger.info("Minimum:" + minimumResult);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
     public static void main(String[] args) {
 
         List<Double> doubleList = Stream.of(0.2, 0.3).collect(Collectors.toList());
