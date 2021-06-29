@@ -7,6 +7,7 @@ import common.entity.UserEntity;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Java stream测试样例.
@@ -92,6 +93,51 @@ public class StreamTest {
         logger.info("我是转换后的String：" + str);
     }
 
+    /**
+     * 6.List<String>通过map转List<对象>
+     *
+     * @param uidList
+     */
+    private static void listStringToListObj(List<String> uidList) {
+        List<UserEntity> userEntityList = Optional.ofNullable(uidList).orElse(new ArrayList<>()).stream().map(UserEntity::new).collect(Collectors.toList());
+        logger.info("userEntity from uidList:" + userEntityList);
+    }
+
+
+    /**
+     * 7.List<对象>通过filter过滤转换为Map
+     *
+     * @param userEntityList 源List对象
+     */
+    private static void listToMapWithFilter(List<UserEntity> userEntityList) {
+        Map<String, String> map = Optional.ofNullable(userEntityList).orElse(new ArrayList<>()).stream().filter(s -> !"1".equals(s.getUid())).collect(Collectors.toMap(UserEntity::getUid, UserEntity::getNickname));
+        logger.info("我是通过filter过滤后的数据：" + map);
+    }
+
+    /**
+     * 8.List<对象>通过forEach直接遍历
+     *
+     * @param userEntityList 源List对象
+     */
+    private static void listForEachDirectly(List<UserEntity> userEntityList) {
+        Optional.ofNullable(userEntityList).orElse(new ArrayList<>()).forEach(s -> s.setNickname("forEach direct"));
+        logger.info("List for each directly:" + userEntityList);
+    }
+
+    /**
+     * 9.Map通过值排序转换为Map(LinkedHashMap)
+     *
+     * @param map 源Map
+     */
+    private static void mapToSortedMap(Map<String, Integer> map) {
+        Map<String, Integer> map1 = Optional.ofNullable(map).orElse(new HashMap<>())
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldVal, newVal) -> oldVal, LinkedHashMap::new));
+        logger.info("排序后的Map：" + map1);
+    }
+
 
     public static void main(String[] args) {
 
@@ -107,6 +153,15 @@ public class StreamTest {
         userEntityList.add(new UserEntity("3", "333", "male"));
 
         StreamTest.listObjToAnotherListObj(userEntityList);
+        StreamTest.listForEachDirectly(userEntityList);
+
+        List<String> uidList = Stream.of("1", "2", "3").collect(Collectors.toList());
+        StreamTest.listStringToListObj(uidList);
+        Map<String, Integer> mapSource = new HashMap<>();
+        mapSource.put("xiaohua", 2);
+        mapSource.put("xioalan", 4);
+        mapSource.put("xiaotian", 1);
+        StreamTest.mapToSortedMap(mapSource);
 
         List<UserAgeEntity> userAgeEntityList = new ArrayList<>();
         userAgeEntityList.add(new UserAgeEntity("1", "xiaoxiao", 10));

@@ -17,6 +17,10 @@ public class UserEntity {
     public UserEntity() {
     }
 
+    public UserEntity(String uid) {
+        this.uid = uid;
+    }
+
     public UserEntity(String uid, String nickname, String sex) {
         this.uid = uid;
         this.nickname = nickname;
