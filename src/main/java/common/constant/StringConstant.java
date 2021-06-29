@@ -66,6 +66,11 @@ public class StringConstant {
      **/
     public static final String END = "end!";
 
+    /**
+     * 空字符串
+     */
+    public static final String EMPTY = "";
+
     private StringConstant() {
         throw new AssertionError(StringConstant.class.getName() + PRIVATE_INSTANCE_ERROR);
     }
