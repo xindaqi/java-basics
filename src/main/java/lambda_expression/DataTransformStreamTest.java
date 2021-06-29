@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  * @author xindaqi
  * @date 2021-06-28 17:16
  */
-public class StreamTest {
+public class DataTransformStreamTest {
 
     private static final Logger logger = Logger.getLogger("StreamTest");
 
@@ -152,16 +152,16 @@ public class StreamTest {
         userEntityList.add(new UserEntity("2", "222", "female"));
         userEntityList.add(new UserEntity("3", "333", "male"));
 
-        StreamTest.listObjToAnotherListObj(userEntityList);
-        StreamTest.listForEachDirectly(userEntityList);
+        DataTransformStreamTest.listObjToAnotherListObj(userEntityList);
+        DataTransformStreamTest.listForEachDirectly(userEntityList);
 
         List<String> uidList = Stream.of("1", "2", "3").collect(Collectors.toList());
-        StreamTest.listStringToListObj(uidList);
+        DataTransformStreamTest.listStringToListObj(uidList);
         Map<String, Integer> mapSource = new HashMap<>();
         mapSource.put("xiaohua", 2);
         mapSource.put("xioalan", 4);
         mapSource.put("xiaotian", 1);
-        StreamTest.mapToSortedMap(mapSource);
+        DataTransformStreamTest.mapToSortedMap(mapSource);
 
         List<UserAgeEntity> userAgeEntityList = new ArrayList<>();
         userAgeEntityList.add(new UserAgeEntity("1", "xiaoxiao", 10));
