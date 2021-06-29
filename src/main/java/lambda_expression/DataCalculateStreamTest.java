@@ -79,6 +79,42 @@ public class DataCalculateStreamTest {
         }
     }
 
+    /**
+     * 5.List<Double>min求最小值
+     *
+     * @param doubleList
+     */
+    private static void minimumTest(List<Double> doubleList) {
+        OptionalDouble minVal = Optional.ofNullable(doubleList).orElse(new ArrayList<>())
+                .stream()
+                .mapToDouble(Double::doubleValue)
+                .min();
+        if(minVal.isPresent()) {
+            double minResult = minVal.getAsDouble();
+            logger.info("Minimum:" + minResult);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
+    /**
+     * 6. List<对象>min求最小值
+     *
+     * @param userAgeEntityList 源列表
+     */
+    private static void minimumTestWithObject(List<UserAgeEntity> userAgeEntityList) {
+        OptionalInt minVal = Optional.ofNullable(userAgeEntityList).orElse(new ArrayList<>())
+                .stream()
+                .mapToInt(UserAgeEntity::getAge)
+                .min();
+        if(minVal.isPresent()) {
+            int minimumResult = minVal.getAsInt();
+            logger.info("Minimum:" + minimumResult);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
     public static void main(String[] args) {
 
         List<Double> doubleList = Stream.of(0.2, 0.3).collect(Collectors.toList());
