@@ -1,8 +1,11 @@
-package datastructure;
+package thirdparty;
 
+import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
 import common.entity.UserFromProto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import static common.constant.DigitalConstant.SIX;
@@ -28,7 +31,22 @@ public class GoogleProtoTest {
         userBuilder.setAge(SIX)
                 .setUsername("xiaoxiao")
                 .setSex("male");
+        List<UserFromProto.User.Team> teamList = new ArrayList<>();
+        UserFromProto.User.Team.Builder team = UserFromProto.User.Team.newBuilder();
+        team.setCeo("ceo");
+        team.setCfo("cfo");
+        UserFromProto.User.Team.Builder team1 = UserFromProto.User.Team.newBuilder();
+        team1.setCeo("ceo2");
+        team1.setCfo("cfo2");
+        userBuilder.addTeamList(team);
+        userBuilder.addTeamList(team1);
+
+        teamList.add(team.build());
+        teamList.add(team1.build());
+        userBuilder.addAllTeamList(teamList);
         logger.info("Proto创建的类：" + userBuilder);
+        Gson json = new Gson();
+        logger.info("gson:" + json.toJson(userBuilder));
         return userBuilder.build().toByteArray();
     }
 
@@ -43,12 +61,18 @@ public class GoogleProtoTest {
         UserFromProto.User user = UserFromProto.User.parseFrom(params);
         logger.info("Proto解析字节结果：" + user);
         logger.info("username: " + user.getUsername());
+        logger.info("cto:" + user.getTeam().getCto());
+        List<UserFromProto.User.Team> teamList = user.getTeamListList();
+        logger.info("team list:" + teamList);
     }
+
+
 
     public static void main(String[] args) {
         try {
             byte[] params = createObjectFromProto();
             parseObjectFromProto(params);
+
         } catch(InvalidProtocolBufferException ipe) {
             throw new RuntimeException(ipe);
         } catch(Exception e) {

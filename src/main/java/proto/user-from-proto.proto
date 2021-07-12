@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message User {
+
+    string username = 1;
+    string sex = 2;
+    int32 age = 3;
+    Team team = 4;
+    repeated Team team_list = 5;
+
+    message Team {
+        string ceo = 1;
+        string cto = 2;
+        string cfo = 3;
+    }
+
+}
