@@ -17,6 +17,7 @@
         <mybatis.version>3.5.3</mybatis.version>
         <java.slf4j2.version>2.11.1</java.slf4j2.version>
         <disruptor.version>3.4.4</disruptor.version>
+        <redis.version>3.5.1</redis.version>
     </properties>
     <build>
         <plugins>
@@ -101,6 +102,12 @@
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
             <version>${disruptor.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${redis.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,4 @@
-package database;
+package database.mysql;
 
 import common.config.MybatisConfig;
 import database.dao.UserDAO;

@@ -1,4 +1,4 @@
-package database;
+package database.mysql;
 
 import static common.constant.DatabaseConstant.MY_SQL;
 
