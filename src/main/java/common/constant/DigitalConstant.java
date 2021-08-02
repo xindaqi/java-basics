@@ -113,6 +113,11 @@ public class DigitalConstant {
      */
     public static final int TEN = 10;
 
+    /**
+     * 双精度：0.0
+     */
+    public static final double ZERO_D = 0.0;
+
 
 
     /**
